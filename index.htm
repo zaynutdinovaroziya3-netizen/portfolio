@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div class="bg-bubbles" aria-hidden="true"></div>
+  
+  <script>
+    (function(){
+      const container = document.querySelector('.bg-bubbles');
+      const TOTAL = 24; 
+      const colors = ['#c714f9', '#7a258f', '#ff79c8', '#ff4fa9'];
+       
+      const rand = (min, max) => Math.random() * (max - min) + min;
+      
+      for (let i = 0; i < TOTAL; i++) {
+        const d = document.createElement('div');
+        d.className = 'bubble';
+        
+        
+        const size = Math.round(rand(18, 140)); 
+        d.style.width = size + 'px';
+        d.style.height = size + 'px';
+        d.style.left = rand(-10, 110) + 'vw';
+        d.style.top = rand(80, 140) + 'vh'; 
+        const c1 = colors[Math.floor(rand(0, colors.length))];
+        const c2 = colors[Math.floor(rand(0, colors.length))];
+        
+        d.style.background = `radial-gradient(circle at 30% 30%, ${c1}, ${c2} 60%)`;
+        d.style.opacity = rand(0.18, 0.85);
+        d.style.borderRadius = '50%';
+        d.style.filter = 'blur(' + rand(0, 6) + 'px)';
+        
+        
+        const dur = rand(8, 20).toFixed(2) + 's';
+        const delay = rand(-10, 5).toFixed(2) + 's';
+        d.style.animation = `bubbleMove ${dur} linear infinite`;
+        d.style.animationDelay = delay;
+        
+        
+        d.style.transform = `translateY(0) scale(${(rand(0.6, 1.4)).toFixed(2)})`;
+        
+        container.appendChild(d);
+      }
+      
+      
+      const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (media.matches) {
+        document.querySelectorAll('.bubble').forEach(b => {
+          b.style.animation = 'none';
+          b.style.opacity = '0.7';
+        });
+      }
+      
+    })();
+  </script>
+  
+  
+  <header class="site-header">
+    <div class="container">
+      <div class="header-wrapper">
+        <a class="logo-link" href="./index.htm">
+          Roziyass
+        </a>
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a class="navbar-link" href="#me">
+                Men haqimda
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a class="navbar-link" href="#family">
+                Mening oilam
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a class="navbar-link" href="#projects">
+                Mening loyihalarim
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main class="site-main">
+    <section class="hero" id="me">
+      <div class="container">
+        <div class="hero-wrapper">
+          <div class="hero-inner">
+            <h1 class="hero-title">
+              Assalomu alaykum mening ismim 
+              <span class="hero-span">Roziya</span>
+            </h1>
+            <p class="desc">
+              Men PDP Junior Sergeli filialida SF-7 guruhida o'qiyman.
+            </p>
+            <a class="hero-link" href="./my.htm">
+              Men haqimda ko'proq
+            </a>
+          </div>
+          <img class="hero-pic" src="./meni rasimi.jpg" alt="This is my photo">
+          <div class="parent">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="family" id="family">
+      <div class="container">
+        <div class="family-wrapper">
+          <div class="family-box">
+            <h2 class="family-title">
+              Mening oilam
+            </h2>
+            <p class="family-desc">
+              Bu mening oilam biz oilada 6 kishimiz adajonim, oyijonim, men, ukam, singlim va kichkina singlim.
+            </p>
+            <a class="family-link" href="./family.htm">
+              Mening oilam
+            </a>
+          </div>
+          <img class="family-pic" src="./photo_2025-09-17_15-35-40.jpg" alt="">
+        </div>
+      </div>
+    </section>
+    
+    <section class="projects" id="projects"> 
+      <div class="container">
+        <h2 class="project-title">
+          Mening loyihalarim
+        </h2>
+        <ul class="project-list">
+          <li class="project-item">
+            <a class="project-link" href="https://panda-by-mrx.netlify.app/" target="_blank">
+              <img class="project-pic" src="./Screenshot 2025-11-08 162838.png" alt="this is my project radar ">
+              <h3 class="project-name"> radar</h3>
+            </a>
+          </li>
+          <li class="project-item"> 
+            <a class="project-link" href="https://sosgame-by-roziyass.netlify.app/" target="_blank">
+              <img class="project-pic" src="./Screenshot 2025-10-22 172704.png" alt="This is project game sos">
+              <h3 class="project-name">SOS game</h3>
+            </a>            
+          </li>
+        </ul>
+        <a class="general-project-link navbar-link" href="./project.htm">
+          Mening loyihalarim
+        </a>
+      </div>
+    </section>
+    
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wrapper">
+        <a class="logo-link" href="./index.html">
+          Roziyass
+        </a>
+        <div class="footer-box">
+          <strong class="strong-text">
+            Ijtimoiy tarmoqlar
+          </strong>
+          <ul class="social-list">
+            <li class="social-item">
+              <img class="social-pic" src="./telegram img.png" alt="This is telegram image">
+            </li>
+            <li class="social-item">
+              <img class="social-pic" src="./insta.svg" alt="This is instagram image">
+            </li>
+          </ul>
+        </div>
+        <div class="footer-box">
+          <address class="footer-address">
+            <div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps/10335/tashkent/?utm_medium=mapframe&utm_source=maps" 
+              style="color:#eee;font-size:12px;position:absolute;top:0px;">Tashkent</a><a href="https://yandex.com/maps/10335/tashkent/?ll=69.200900%2C41.225254&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgozNDI3NzI1NzA1EkBPyrt6YmVraXN0b24sIFRvc2hrZW50LCBZYW5naWhheW90IHR1bWFuaSwgU2VyZ2VsaS1WYSBkYWhhc2ksIDI3IgoNVmeKQhU35iRC&utm_medium=mapframe&utm_source=maps&z=16.95"
+              style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps: search for places, transport, and routes</a><iframe src="https://yandex.com/map-widget/v1/?ll=69.200900%2C41.225254&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgozNDI3NzI1NzA1EkBPyrt6YmVraXN0b24sIFRvc2hrZW50LCBZYW5naWhheW90IHR1bWFuaSwgU2VyZ2VsaS1WYSBkYWhhc2ksIDI3IgoNVmeKQhU35iRC&z=16.95"
+              width="400" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+            </address>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+  
+</body>
+</html>

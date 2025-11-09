@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <div class="bg-bubbles" aria-hidden="true"></div>
+    
+    <script>
+        (function(){
+            const container = document.querySelector('.bg-bubbles');
+            const TOTAL = 24; 
+            const colors = ['#c714f9', '#7a258f', '#ff79c8', '#ff4fa9'];
+            
+            const rand = (min, max) => Math.random() * (max - min) + min;
+            
+            for (let i = 0; i < TOTAL; i++) {
+                const d = document.createElement('div');
+                d.className = 'bubble';
+                
+                
+                const size = Math.round(rand(18, 140)); 
+                d.style.width = size + 'px';
+                d.style.height = size + 'px';
+                d.style.left = rand(-10, 110) + 'vw';
+                d.style.top = rand(80, 140) + 'vh'; // pastdan boshlaydi
+                
+                // rang: 60% pushti, 40% qora variant berish — lekin aralash ko'rinish uchun gradient qo'yamiz
+                const c1 = colors[Math.floor(rand(0, colors.length))];
+                const c2 = colors[Math.floor(rand(0, colors.length))];
+                
+                d.style.background = `radial-gradient(circle at 30% 30%, ${c1}, ${c2} 60%)`;
+                d.style.opacity = rand(0.18, 0.85);
+                d.style.borderRadius = '50%';
+                d.style.filter = 'blur(' + rand(0, 6) + 'px)';
+                
+                // animatsiya: yuqoriga suzish, biroz yon siljish va burilish
+                const dur = rand(8, 20).toFixed(2) + 's';
+                const delay = rand(-10, 5).toFixed(2) + 's';
+                d.style.animation = `bubbleMove ${dur} linear infinite`;
+                d.style.animationDelay = delay;
+                
+                // biroz transform (scale) bilan farqlantirish
+                d.style.transform = `translateY(0) scale(${(rand(0.6, 1.4)).toFixed(2)})`;
+                
+                container.appendChild(d);
+            }
+            
+            // Agar brauzer prefers-reduced-motion yoqilgan bo'lsa, animatsiyalarni o'chirish
+            const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (media.matches) {
+                document.querySelectorAll('.bubble').forEach(b => {
+                    b.style.animation = 'none';
+                    b.style.opacity = '0.7';
+                });
+            }
+            
+        })();
+    </script>
+    
+    
+    <header class="site-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <a class="logo-link" href="./index.htm">
+                    Roziyass
+                </a>
+                <nav class="navbar">
+                    <ul class="navbar-list">
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="#me">
+                                Men haqimda
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="#family">
+                                Mening oilam
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="#projects">
+                                Mening loyihalarim
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-wrapper">
+                    <div class="hero-inner">
+                        <h1 class="hero-title">
+                            Assalomu alaykum mening ismim 
+                            <span class="hero-span">Roziya</span>
+                        </h1>
+                        <p class="desc">
+                            Men PDP Junior Sergeli filialida SF-7 guruhida o'qiyman. 300 - maktabda 8 - sinfda o'qiyman. Asosan ovqat pishirishga qiziqaman va telegramda Rozi kitchen degan kanalim ham bor. Shu bilan birga ITga ham qiziqaman sababi kelajakda o'zim uchun Rozi kitchen veb sahifasini qilmoqchiman va albatta bu soha menga kerak bo'ladi.
+                        </p>
+                        <a class="hero-link" href="./my.htm">
+                            Men haqimda ko'proq
+                        </a>
+                    </div>
+                    <img class="hero-pic" src="./meni rasimi.jpg" alt="This is my photo">
+                    <div class="parent">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="hobby">
+            <div class="container">
+                <div class="hobby-wrapper">
+                    <div class="inner-hobby">
+                        <h3>
+                            Ovqat pishirish
+                        </h3>
+                        <p>
+                            Man 11 yohshimdan boshlab shirinliklar tayyorlashga qiziqaman sababi meni oyim shu soxada uyda otirib qizlarni pishirishga orgatganlarshuning uchun shu paytgacha ancha pishiriqlarni tayyorlashni o'rgandim.
+                             sizlarga tayyorlagan taomlarimni oz qismini ko'rsataman.
+                        </p>
+                    </div>
+                </div>
+
+                <ul class="hobby-list">
+                    <li class="hobby-item">
+                        <img src="./miringeviy__2.jpg" alt="" class="hobby-pic">
+                    </li>
+                    <li class="hobby-item">
+                        <img src="./malinali pirog.jpg" alt="" class="hobby-pic">
+                    </li>
+                    <li class="hobby-item">
+                        <img src="./yonqoq_magizli_pirog.jpg" alt="" class="hobby-pic">
+                    </li>
+                    <li class="hobby-item">
+                        <img src="./olchali_pirog.jpg" alt="" class="hobby-pic">
+                    </li>
+                    <li class="hobby-item">
+                        <img src="./olmali_pirog.jpg" alt="" class="hobby-pic">
+                    </li>
+                    <li class="hobby-item">
+                        <img src="./garchi_brouniy.jpg" alt="" class="hobby-pic">
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
